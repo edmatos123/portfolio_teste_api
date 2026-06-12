@@ -1,0 +1,29 @@
+name: Portifolio Teste API
+
+on:
+ push:
+  branch:
+    - main
+
+jobs:
+  teste:
+    runs-on: ubuntu-latest
+
+  steps:
+  
+  - name: Checkout Projeto
+    uses: actions/checkout@v4
+  
+  - name: Configurar Java
+    uses: actions/setup-java@v4
+     with:
+      distribution: temurin
+      java-version: 21
+      cache: maven
+
+  - name: Executar Teste
+    if: always()
+    uses: actions/upload-artifact@v4
+     with:
+      name: allure-results
+      path: allure-results

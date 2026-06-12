@@ -10,7 +10,7 @@ Demonstrar a automação de testes em uma API pública (https://reqres.in) cobri
 ---
 ## 🧰 Tecnologias Utilizadas
 
-- ☕ **Java 17**
+- ☕ **Java 21**
 - 🧩 **Maven**
 - 🧪 **JUnit 5**
 - 🔗 **RestAssured**

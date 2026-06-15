@@ -58,6 +58,27 @@ Observação: Não foi possível tratar outras exceções em virtude das limita�
 
 <img width="1348" height="635" alt="image" src="https://github.com/user-attachments/assets/c31a4696-672f-4411-82f7-26f858eea439" />
 
+
+---
+
+## ⚙️ Pipeline CI/CD
+
+O projeto possui integração com GitHub Actions para execução automática dos testes.
+
+Fluxo da pipeline:
+
+```text
+Push
+   ↓
+Checkout
+   ↓
+Configuração Java 21
+   ↓
+Execução dos Testes
+   ↓
+Geração dos Relatórios
+```
+
 ---
 ## ▶️ Como executar
 

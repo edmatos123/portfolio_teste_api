@@ -21,8 +21,7 @@
 	<dependency>
     <groupId>io.rest-assured</groupId>
     <artifactId>rest-assured</artifactId>
-    <version>${restassured.version}</version>
-    <scope>test</scope>
+    <version>${restassured.version}</version>   
     </dependency>
     
     <dependency>
@@ -55,16 +54,14 @@
 <dependency>
     <groupId>io.qameta.allure</groupId>
     <artifactId>allure-junit5</artifactId>
-    <version>${allureJunir.version}</version>
-    <scope>test</scope>
+    <version>${allureJunir.version}</version>   
 </dependency>
 
 <dependency>
     <groupId>io.qameta.allure</groupId>
     <artifactId>allure-rest-assured</artifactId>
     <version>${allureRest.version}</version>
-    <scope>test</scope>
-</dependency>
+   </dependency>
 	  
   </dependencies>
   

@@ -10,6 +10,9 @@ import modelo.RespostaUsuarios;
 import modelo.Usuario;
 import static org.apache.http.HttpStatus.*;
 
+import configuracao.Endpoints;
+import configuracao.Endpoints.*;
+
 
 public class UsuarioServico {
 	
@@ -42,7 +45,7 @@ public class UsuarioServico {
 		queryParam("page", pag).
 		spec(spec). 
 			when(). 
-			get("/users/").
+			get(Endpoints.USERS).
 				then().				
 				statusCode(SC_OK).
 				extract().				
@@ -58,7 +61,7 @@ public class UsuarioServico {
 				spec(spec).    
 		    	pathParam("id", id).
 		    	when().
-		    	get("/users/{id}").
+		    	get(Endpoints.USER_ID).
 		    	then().
 		    	statusCode(SC_NOT_FOUND);				
 		
@@ -73,7 +76,7 @@ public class UsuarioServico {
 		spec(spec). 
 		body(usr).
 			when().
-			post("/users").
+			post(Endpoints.USERS).
 			 	then().
 			 	statusCode(SC_CREATED);
 		
@@ -89,7 +92,7 @@ public class UsuarioServico {
 		pathParam("id", usr.getId()).
 		body(usr).		
 			when().
-			put("/users/{id}").
+			put(Endpoints.USER_ID).
 			then().
 			statusCode(SC_OK);
 		
@@ -106,7 +109,7 @@ public class UsuarioServico {
 		pathParam("id", usr.getId()).
 		body(usr).		
 			when().
-			delete("/users/{id}").
+			delete(Endpoints.USER_ID).
 			then().
 			statusCode(SC_NO_CONTENT);
 		
@@ -121,7 +124,7 @@ public class UsuarioServico {
 				given().
 				spec(spec). 
 				when().
-				get("/users/").
+				get(Endpoints.USERS).
 				then().
 				statusCode(SC_OK).
 				extract().

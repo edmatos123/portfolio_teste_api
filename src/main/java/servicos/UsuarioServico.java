@@ -11,7 +11,6 @@ import modelo.Usuario;
 import static org.apache.http.HttpStatus.*;
 
 import configuracao.Endpoints;
-import configuracao.Endpoints.*;
 
 
 public class UsuarioServico {
@@ -29,7 +28,7 @@ public class UsuarioServico {
 				spec(spec).    
 		    	pathParam("id", id).
 		    	when().
-		    	get("/users/{id}").
+		    	get(Endpoints.USER_ID).
 		    	then().		    	
 		    	statusCode(SC_OK).
 		    	extract().jsonPath().getObject("data",Usuario.class);				

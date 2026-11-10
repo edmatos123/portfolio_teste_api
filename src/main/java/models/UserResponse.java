@@ -1,4 +1,4 @@
-package modelo;
+package models;
 
 import java.util.List;
 import java.util.Objects;
@@ -10,14 +10,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 //Ignora atributos JSON que não foram mapeados na página
 @JsonIgnoreProperties(ignoreUnknown = true) 
 
-public class RespostaUsuarios {
+public class UserResponse {
 	
 	
 	private int page;
 	private int per_page;
 	private int total;
 	private int total_pages;
-	private List<Usuario> data;
+	private List<User> data;
 	
 	public int getPage() {
 		return page;
@@ -31,7 +31,7 @@ public class RespostaUsuarios {
 	public int getTotal_pages() {
 		return total_pages;
 	}
-	public List<Usuario> getData() {
+	public List<User> getData() {
 		return data;		
 	}
 	@Override
@@ -46,7 +46,7 @@ public class RespostaUsuarios {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		RespostaUsuarios other = (RespostaUsuarios) obj;
+		UserResponse other = (UserResponse) obj;
 		return Objects.equals(data, other.data) && page == other.page && per_page == other.per_page
 				&& total == other.total && total_pages == other.total_pages;
 	}			

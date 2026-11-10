@@ -1,4 +1,4 @@
-package servicos;
+package services;
 
 import static io.restassured.RestAssured.given;
 
@@ -7,21 +7,22 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import endpoints.Endpoints;
 import io.restassured.specification.RequestSpecification;
-import modelo.RespostaUsuarios;
-import modelo.Usuario;
+import models.UserResponse;
+import models.User;
+
 import static org.apache.http.HttpStatus.*;
 
 
-public class UsuarioServico {
+public class UserService {
 	
 	private final RequestSpecification spec;
 	
-	public UsuarioServico (RequestSpecification spec) {
+	public UserService (RequestSpecification spec) {
 		this.spec = spec;
 		
 	}	
 	
-	public Usuario obterUsuarioId(String id) {		
+	public User obterUsuarioId(String id) {		
 		return given().
 				spec(spec).    
 		    	pathParam("id", id).
@@ -29,14 +30,14 @@ public class UsuarioServico {
 		    	get(Endpoints.USER_ID).
 		    	then().		    	
 		    	statusCode(SC_OK).
-		    	extract().jsonPath().getObject("data",Usuario.class);				
+		    	extract().jsonPath().getObject("data",User.class);				
 		
 		
 	}
 	
 	
-	public List<Usuario> obterUsuariosPagina(String pag){
-		RespostaUsuarios usuarios = new RespostaUsuarios();
+	public List<User> obterUsuariosPagina(String pag){
+		UserResponse usuarios = new UserResponse();
 		                                  
 		usuarios = given().
 		queryParam("page", pag).
@@ -46,7 +47,7 @@ public class UsuarioServico {
 				then().				
 				statusCode(SC_OK).
 				extract().				
-				as(RespostaUsuarios.class);
+				as(UserResponse.class);
 		
 		
 		return usuarios.getData();			
@@ -67,7 +68,7 @@ public class UsuarioServico {
 	
 	
 	
-	public void cadastrarUsuario(Usuario usr) {
+	public void cadastrarUsuario(User usr) {
 		
 		given().
 		spec(spec). 
@@ -80,7 +81,7 @@ public class UsuarioServico {
 		
 	}
 	
-	public void alterarUsuario(Usuario usr,String nomeNovo) {
+	public void alterarUsuario(User usr,String nomeNovo) {
 		
 		usr.setFirst_name(nomeNovo);
 		
@@ -99,7 +100,7 @@ public class UsuarioServico {
 	}
 	
 	
-	public void deletarUsuario(Usuario usr) {
+	public void deletarUsuario(User usr) {
 						
 		given().
 		spec(spec). 
@@ -116,8 +117,8 @@ public class UsuarioServico {
 	}
 	
 	
-	public Usuario obterUsuario() {
-		RespostaUsuarios usrDados =		
+	public User obterUsuario() {
+		UserResponse usrDados =		
 				given().
 				spec(spec). 
 				when().
@@ -125,9 +126,9 @@ public class UsuarioServico {
 				then().
 				statusCode(SC_OK).
 				extract().
-				as(RespostaUsuarios.class);						
+				as(UserResponse.class);						
 		
-		List<Usuario> usr = usrDados.getData();
+		List<User> usr = usrDados.getData();
 		
 		
 		return  usr.get(ThreadLocalRandom.current().nextInt(usr.size()));

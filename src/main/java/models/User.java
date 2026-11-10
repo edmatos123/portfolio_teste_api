@@ -1,4 +1,4 @@
-package modelo;
+package models;
 
 
 import java.util.Objects;
@@ -6,7 +6,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-public class Usuario {
+public class User {
 	
 	
     
@@ -20,7 +20,7 @@ public class Usuario {
    private Long id;
     
     
-	public Usuario(Long id, String email, String first_name, String last_name, String avatar) {
+	public User(Long id, String email, String first_name, String last_name, String avatar) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -29,7 +29,7 @@ public class Usuario {
 		this.avatar = avatar;
 	}		
 	
-	public Usuario() {
+	public User() {
 		
 	}
 
@@ -50,26 +50,26 @@ public class Usuario {
 	
 	
 	//CRIAR METOSOS BIELD	
-	public Usuario email(String email) {
+	public User email(String email) {
 		
 		 this.email = email;
 		return this;
 	}
 	
 	
-	public Usuario first_name(String first_name) {
+	public User first_name(String first_name) {
 		
 		this.first_name = first_name;
 		return this;
 	}
 	
-	public Usuario last_name(String last_name) {
+	public User last_name(String last_name) {
 		
 		this.last_name = last_name;
 		return this;
 	}
 	
-	public Usuario avatar(String avatar) {
+	public User avatar(String avatar) {
 		
 		this.avatar = avatar;
 		return this;
@@ -90,7 +90,7 @@ public class Usuario {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuario other = (Usuario) obj;
+		User other = (User) obj;
 		return Objects.equals(avatar, other.avatar) && Objects.equals(email, other.email)
 				&& Objects.equals(first_name, other.first_name) && Objects.equals(id, other.id)
 				&& Objects.equals(last_name, other.last_name);

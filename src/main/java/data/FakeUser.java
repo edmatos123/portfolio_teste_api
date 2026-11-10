@@ -1,22 +1,21 @@
-package dados;
+package data;
 
 
 import com.github.javafaker.Faker;
 
+import models.User;
 
-import modelo.Usuario;
-
-public class UsuarioFalso {
+public class FakeUser {
 		
 	private final Faker fake;
 	
-	public UsuarioFalso() {
+	public FakeUser() {
 		fake = new Faker();
 	}
 
-	public Usuario usuarioValido() {
+	public User usuarioValido() {
 		
-		return new Usuario()
+		return new User()
 				.email(fake.internet().emailAddress())
 				.first_name(fake.name().firstName())
 				.last_name(fake.name().lastName())

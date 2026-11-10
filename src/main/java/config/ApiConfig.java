@@ -1,4 +1,4 @@
-package configuracao;
+package config;
 
 import static io.restassured.RestAssured.*;
 
@@ -8,7 +8,7 @@ import io.restassured.specification.RequestSpecification;
 import io.restassured.http.ContentType;
 import io.restassured.filter.log.LogDetail;
 
-public class ConfiguracaoApi {
+public class ApiConfig {
 
 	
 

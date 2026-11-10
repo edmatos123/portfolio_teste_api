@@ -1,8 +1,12 @@
-package testes;
+package tests;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+
+import config.RequestConfig;
+import data.FakeUser;
+
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -11,29 +15,27 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import java.util.List;
 import static org.hamcrest.CoreMatchers.is;
 
-import dados.UsuarioFalso;
 import io.qameta.allure.*;
 import io.restassured.specification.RequestSpecification;
-import modelo.Usuario;
-import servicos.UsuarioServico;
-import configuracao.ConfiguracaoRegrs;
+import models.User;
+import services.UserService;
 
 
 @Epic("API REQRES.IN")
 @Feature("CRUD USUARIO")
 @TestMethodOrder(OrderAnnotation.class)
-public class UsuarioTest  {
+public class UserTest  {
 	
-	 private UsuarioFalso usuarioTeste ;
-	 private UsuarioServico servUsuario; 
+	 private FakeUser usuarioTeste ;
+	 private UserService servUsuario; 
 	  
 	@BeforeEach
 	public void configurar() {
 	
-	RequestSpecification request = ConfiguracaoRegrs.configurarRegrs();
+	RequestSpecification request = RequestConfig.configurarRegrs();
 		 
-	 usuarioTeste = new UsuarioFalso();
-	 servUsuario = new UsuarioServico(request);
+	 usuarioTeste = new FakeUser();
+	 servUsuario = new UserService(request);
 		
 	}
 	
@@ -44,7 +46,7 @@ public class UsuarioTest  {
 	@Story("1 - Consultar o usuario pelo id cadastrado")
     public void consultarUsuarioCadastradoComIdValido() {   	       	    	
     
-		Usuario usr = servUsuario.obterUsuarioId("2");	
+		User usr = servUsuario.obterUsuarioId("2");	
 		assertThat( usr.getFirst_name(),is ("Janet"));
     	
     }
@@ -55,7 +57,7 @@ public class UsuarioTest  {
 	@Story("2 - Consultar quantidade de usuario existente em uma pagina")
     public void consultarUsuariosPorPaginas() {
    
-    List <Usuario> usr = servUsuario.obterUsuariosPagina("2");	
+    List <User> usr = servUsuario.obterUsuariosPagina("2");	
     	
      	
     assertThat(usr.size(), is(6));
